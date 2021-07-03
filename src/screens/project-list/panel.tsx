@@ -1,5 +1,15 @@
-const Panel = ({users, param, setParam}) => {
+import { UserProps } from "./index";
 
+interface PanelProps {
+  users: UserProps[];
+  param: {
+    name: string;
+    id: string;
+  };
+  setParam: (params: PanelProps["param"]) => void;
+}
+
+const Panel = ({ users, param, setParam }: PanelProps) => {
   return (
     <form>
       <div>
@@ -24,7 +34,9 @@ const Panel = ({users, param, setParam}) => {
         >
           <option value="">全部</option>
           {users.map((user) => (
-            <option key={user.id} value={user.id}>{user.name}</option>
+            <option key={user.id} value={user.id}>
+              {user.name}
+            </option>
           ))}
         </select>
       </div>

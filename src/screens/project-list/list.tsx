@@ -1,4 +1,11 @@
-const List = ({ users, projects }) => {
+import { UserProps, ProjectProps } from "./index";
+
+interface ListProps {
+  users: UserProps[];
+  projects: ProjectProps[];
+}
+
+const List = ({ users, projects }: ListProps) => {
   return (
     <table>
       <thead>
@@ -11,7 +18,9 @@ const List = ({ users, projects }) => {
         {projects.map((project) => (
           <tr key={project.id}>
             <td>{project.name}</td>
-            <td>{users.find(user => user.id === project.personId)?.name || '-'}</td>
+            <td>
+              {users.find((user) => user.id === project.personId)?.name || "-"}
+            </td>
           </tr>
         ))}
       </tbody>
